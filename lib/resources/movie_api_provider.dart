@@ -6,7 +6,7 @@ import 'package:http/http.dart';
 class MovieApiProvider {
   Client http = Client();
   static final _apiKey = "e89f9f7cbba267b8c7025fc06a1bb120";
-  final _baseUrl = "https://api.themoviedb.org/3";
+  final _baseUrl = "https://api.themoviedb.org/3/movie";
   final _tail = "?api_key=$_apiKey";
 
   Future<MovieItem> getPopularMovies() async {
