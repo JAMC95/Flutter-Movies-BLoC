@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movies_bloc/blocs/movies_bloc.dart';
 import 'package:flutter_movies_bloc/models/movie_item.dart';
+import 'package:flutter_movies_bloc/resources/movie_detail_bloc_provider.dart';
+
+import 'movie_detail.dart';
 
 class MovieList extends StatefulWidget {
   @override
@@ -65,6 +68,20 @@ class _MovieListState extends State<MovieList> {
     );
   }
   openDetailPelicula(MovieItem data, int index) {
-
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) {
+        return MovieDetailBlocProvider(
+            child: MovieDetail(
+                  title: data.results[index].title,
+                  posterUrl: data.results[index].backdropPath,
+                  description: data.results[index].overview,
+                  releaseDate: data.results[index].releaseDate,
+                  voteAverage: data.results[index].voteAverage,
+                  movieId: data.results[index].id
+                )
+        );
+      })
+    );
   }
 }
